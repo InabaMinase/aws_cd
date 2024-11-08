@@ -1,12 +1,12 @@
 name: AWS Code Deploy
 
 on:
-push:
-  branches: [ main ]
+  push:
+    branches: [ main ]
 
 jobs:
-build:
-  runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
   steps:
   - uses: chrislennon/action-aws-cli@v1.1
