@@ -8,15 +8,16 @@ jobs:
   build:
     runs-on: ubuntu-Latest
 
-  steps:
-  - uses: actions/checkout@v2
+    steps:
+    - uses: actions/checkout@v2
 
-  - name: Set AWS region
-    run: aws configure set region us-east-1
+
+    - name: Set AWS region
+      run: aws configure set region us-east-1
     
-  - name: Run AWS CodeDeploy
-    run: aws deploy create-deployment --application-name "web-app" --deployment-group-name "github_deploy_gp" --github-location repository="nabaMinase/aws_cd/",commitId="${{ github.sha }}"
-    env:
+    - name: Run AWS CodeDeploy
+      run: aws deploy create-deployment --application-name "web-app" --deployment-group-name "github_deploy_gp" --github-location repository="nabaMinase/aws_cd/",commitId="${{ github.sha }}"
+      env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
